@@ -3,12 +3,15 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from "react-router";
 import './index.css'
 import { Router } from './router';
+import { ThemeProvider } from './components/theme-provider';
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+    <ThemeProvider defaultTheme="dark" storageKey="smartspend-ui-theme">
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>
 )

@@ -8,7 +8,7 @@ import { Link } from "react-router";
 export function SignUp() {
   return(
     <div className="flex flex-col items-center justify-center gap-2 p-6 w-md">
-      <BadgeDollarSign className="w-8 h-8" />
+      <BadgeDollarSign className="w-16 h-16 text-primary" />
       <h1 className="text-2xl font-bold tracking-tighter">Bem-vindo ao SmartSpend</h1>
       <p className="text-sm text-foreground">Já possui uma conta? <Link to="/sign-in" className="text-muted-foreground underline">Entre agora!</Link></p>
 

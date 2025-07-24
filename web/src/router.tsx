@@ -6,6 +6,7 @@ import { AppLayout } from "./pages/_layouts/app";
 import { Dashboard } from "./pages/app/dashboard";
 import { SignIn } from "./pages/auth/sign-in";
 import { SignUp } from "./pages/auth/sign-up";
+import { Transactions } from "./pages/app/transactions";
 
 
 export function Router() {
@@ -17,6 +18,7 @@ export function Router() {
       </Route>
       <Route path="/" element={<AppLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/transactions" element={<Transactions />} />
       </Route>
     </Routes>
   )
