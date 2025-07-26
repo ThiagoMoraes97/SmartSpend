@@ -1,4 +1,4 @@
-import { InfoTable } from "@/components/info-table";
+import { InfoTable } from "@/components/table/info-table";
 
 // Dados de exemplo para as transações
 const transactionsData = [
@@ -29,7 +29,7 @@ export function Transactions() {
   return (
    <div className="p-6 w-full flex flex-col gap-10">
       <div>
-        <h1 className="text-2xl font-bold tracking-tighter">Transactions</h1>
+        <h1 className="text-2xl font-bold tracking-tighter">Transações</h1>
         <p className="text-muted-foreground">Aqui você pode gerenciar suas transações.</p>
       </div>
 

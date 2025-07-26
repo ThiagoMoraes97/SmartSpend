@@ -1,27 +1,26 @@
 import {
   Card,
-  CardAction,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 
-export function AppCards() {
+interface AppCardProps {  
+  title: string;
+  content: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+export function AppCards({ title, content, icon: Icon }: AppCardProps) {
   return(
     <Card className="w-full h-full bg-card hover:bg-card-hover transition-colors">
-      <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
-        <CardAction>Card Action</CardAction>
+      <CardHeader className="flex items-center justify-between">
+        <CardTitle className="text-muted-foreground">{title}</CardTitle>
+        {Icon && <Icon className="w-6 h-6 text-primary" />}
       </CardHeader>
-      <CardContent>
-        <p>Card Content</p>
+      <CardContent className="text-3xl font-medium text-foreground">
+        <strong>{content}</strong>
       </CardContent>
-      <CardFooter>
-       <p>Card Footer</p>
-      </CardFooter>
     </Card>
   )
 }

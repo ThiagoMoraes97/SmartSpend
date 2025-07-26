@@ -1,7 +1,8 @@
 import { AppCards } from "@/components/app-cards";
 import { ChartBar } from "@/components/chart-bar";
 import { ChartPie } from "@/components/chart-pie";
-import { InfoTable } from "@/components/info-table";
+import { InfoTable } from "@/components/table/info-table";
+import { Banknote, CreditCard, DollarSign, Wallet } from "lucide-react";
 
 // Dados de exemplo para as transações
 const transactionsData = [
@@ -61,10 +62,10 @@ export function Dashboard() {
       </div>
 
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-        <AppCards />
-        <AppCards />
-        <AppCards />
-        <AppCards />
+        <AppCards title="Total de Gastos" content="R$ 150,00" icon={DollarSign} />
+        <AppCards title="No Crédito" content="R$ 120,00" icon={CreditCard} />
+        <AppCards title="No Débito" content="R$ 200,00" icon={Wallet} />
+        <AppCards title="Em Dinheiro/Pix" content="R$ 90,00" icon={Banknote} />
       </section>
 
       <section className="grid grid-cols-1 lg:grid-cols-9 gap-4 lg:gap-6 h-96">
@@ -74,12 +75,11 @@ export function Dashboard() {
         <div className="lg:col-span-3 h-96">
           <ChartPie />
         </div>
-      </section>
+     </section>
 
       <section>
         <h2 className="text-xl font-bold tracking-tighter mb-6">Transações Recentes</h2>
-
-        <InfoTable data={transactionsData} />
+        <InfoTable />
       </section>
     </div>
   );
