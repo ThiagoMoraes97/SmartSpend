@@ -1,5 +1,14 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { TableContent, type TableContents } from "./table";
+import { Search, X } from "lucide-react";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { TableContent, type TableContents } from "./table-content";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const data: TableContents = [
   {
@@ -109,31 +118,45 @@ const data: TableContents = [
   },
 ];
 
-export function InfoTable() {
+export function FilteredTable() {
   return(
-    <Tabs defaultValue="all" className="w-full p-2">
-      <TabsList>
-        <TabsTrigger value="all">Todos</TabsTrigger>
-        <TabsTrigger value="credit">Crédito</TabsTrigger>
-        <TabsTrigger value="debit">Débito</TabsTrigger>
-        <TabsTrigger value="cash">Dinheiro</TabsTrigger>
-        <TabsTrigger value="pix">Pix</TabsTrigger>
-      </TabsList>
-      <TabsContent value="all">
-        <TableContent data={data} />
-      </TabsContent>
-      <TabsContent value="credit">
-        <TableContent data={data.filter(item => item.payment === "Cartão de Crédito")} />
-      </TabsContent>
-      <TabsContent value="debit">
-        <TableContent data={data.filter(item => item.payment === "Débito")} />
-      </TabsContent>
-      <TabsContent value="cash">
-        <TableContent data={data.filter(item => item.payment === "Dinheiro")} />
-      </TabsContent>
-      <TabsContent value="pix">
-        <TableContent data={data.filter(item => item.payment === "Pix")} />
-      </TabsContent>
-    </Tabs>
+    <div>
+      <form className="mb-4 flex items-center gap-2 w-full">
+        <Input placeholder="Filtrar por descrição" className="w-[400px]" />
+        <Select>
+          <SelectTrigger className="w-[200px]">
+            <SelectValue placeholder="Forma de Pagamento" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="credit">Crédito</SelectItem>
+            <SelectItem value="debit">Débito</SelectItem>
+            <SelectItem value="cash">Dinheiro</SelectItem>
+            <SelectItem value="pix">Pix</SelectItem>
+          </SelectContent>
+        </Select>
+
+        <Select>
+          <SelectTrigger className="w-[200px]">
+            <SelectValue placeholder="Categoria" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="home">Casa</SelectItem>
+            <SelectItem value="food">Alimentação</SelectItem>
+            <SelectItem value="transport">Transporte</SelectItem>
+            <SelectItem value="health">Saúde</SelectItem>
+            <SelectItem value="other">Outros</SelectItem>
+          </SelectContent>
+        </Select>
+        <Button variant={"secondary"} type="submit" className="cursor-pointer">
+          <Search className="h-4 w-4 mr-2" />
+          Filtrar Resultados
+        </Button>
+        <Button variant={"outline"} type="button" className="cursor-pointer">
+          <X className="h-4 w-4 mr-2" />
+          Remover Filtros
+        </Button>
+      </form>
+      <TableContent data={data} />
+    </div>
   )
 }

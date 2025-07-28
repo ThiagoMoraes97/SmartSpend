@@ -1,13 +1,10 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
 
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -43,7 +40,7 @@ export function ChartBar() {
         <CardTitle className="text-xl">Evolução de Gastos</CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-64 w-full">
+        <ChartContainer config={chartConfig} className="h-72 w-full">
           <BarChart
             accessibilityLayer
             data={chartData}

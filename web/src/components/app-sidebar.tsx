@@ -25,7 +25,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   }
 
   return (
-    <Sidebar collapsible="offcanvas" {...props}>
+    <Sidebar collapsible="offcanvas" variant="sidebar" {...props}>
       <SidebarHeader>
         <div className="flex items-center gap-2">
           <BadgeDollarSign className="w-6 h-6 text-primary"/>

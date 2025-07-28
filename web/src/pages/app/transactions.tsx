@@ -1,4 +1,4 @@
-import { InfoTable } from "@/components/table/info-table";
+import { FilteredTable } from "@/components/table/filtered-table";
 
 // Dados de exemplo para as transações
 const transactionsData = [
@@ -34,7 +34,7 @@ export function Transactions() {
       </div>
 
       <div>
-          <InfoTable data={transactionsData} />
+          <FilteredTable />
         </div>
    </div>
   )

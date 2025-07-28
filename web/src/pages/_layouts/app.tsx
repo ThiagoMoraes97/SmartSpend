@@ -7,6 +7,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Menu } from "lucide-react"
 import { Outlet } from "react-router"
+import { SelectOrganization } from "@/components/select-organization"
 
 function SidebarTrigger() {
   const { toggleSidebar } = useSidebar()
@@ -15,10 +16,10 @@ function SidebarTrigger() {
     <Button 
       variant="ghost" 
       size="icon" 
-      className="h-8 w-8 cursor-pointer"
+      className="h-8 w-8 cursor-pointer mr-2"
       onClick={toggleSidebar}
     >
-      <Menu className="h-4 w-4" />
+      <Menu className="h-6 w-6" />
     </Button>
   )
 }
@@ -32,6 +33,7 @@ export function AppLayout() {
         <main className="flex flex-1 flex-col p-2">
           <div className="flex items-center">
             <SidebarTrigger />
+            <SelectOrganization />
           </div>
           <Outlet />
         </main>
