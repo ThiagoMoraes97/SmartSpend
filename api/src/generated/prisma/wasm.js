@@ -124,17 +124,16 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
-  password: 'password',
+  password_hash: 'password_hash',
   phone: 'phone',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  created_at: 'created_at'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  userId: 'userId',
-  createdAt: 'createdAt'
+  user_id: 'user_id',
+  created_at: 'created_at'
 };
 
 exports.Prisma.TransactionScalarFieldEnum = {
@@ -144,14 +143,14 @@ exports.Prisma.TransactionScalarFieldEnum = {
   category: 'category',
   type: 'type',
   date: 'date',
-  accountId: 'accountId'
+  account_id: 'account_id'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
+  user_id: 'user_id',
   token: 'token',
-  createdAt: 'createdAt'
+  created_at: 'created_at'
 };
 
 exports.Prisma.SortOrder = {

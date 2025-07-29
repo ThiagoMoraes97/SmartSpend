@@ -15,42 +15,41 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String?
-  phone     String?  @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  password_hash String?
+  phone         String?  @unique
+  created_at    DateTime @default(now())
 
-  Session Session[]
-  Account Account[]
+  sessions Session[]
+  accounts Account[]
 
   @@map("users")
 }
 
 model Account {
-  id        String   @id @default(uuid())
-  name      String
-  userId    String
-  createdAt DateTime @default(now())
+  id         String   @id @default(uuid())
+  name       String
+  user_id    String
+  created_at DateTime @default(now())
 
-  user        User          @relation(fields: [userId], references: [id])
-  transaction Transaction[]
+  user         User          @relation(fields: [user_id], references: [id])
+  transactions Transaction[]
 
   @@map("accounts")
 }
 
 model Transaction {
-  id        String      @id @default(uuid())
+  id          String      @id @default(uuid())
   description String
-  amount    Float
-  category   Category
-  type      PaymentType
-  date      DateTime    @default(now())
+  amount      Float
+  category    Category
+  type        PaymentType
+  date        DateTime    @default(now())
 
-  accountId String
-  Account   Account     @relation(fields: [accountId], references: [id])
+  account_id String
+  Account    Account @relation(fields: [account_id], references: [id])
 
   @@map("transactions")
 }
@@ -71,12 +70,12 @@ enum PaymentType {
 }
 
 model Session {
-  id        String   @id @default(uuid())
-  userId    String
-  token     String   @unique
-  createdAt DateTime @default(now())
+  id         String   @id @default(uuid())
+  user_id    String
+  token      String   @unique
+  created_at DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [user_id], references: [id])
 
   @@map("sessions")
 }

@@ -1176,13 +1176,13 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    Session: number
-    Account: number
+    sessions: number
+    accounts: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Session?: boolean | UserCountOutputTypeCountSessionArgs
-    Account?: boolean | UserCountOutputTypeCountAccountArgs
+    sessions?: boolean | UserCountOutputTypeCountSessionsArgs
+    accounts?: boolean | UserCountOutputTypeCountAccountsArgs
   }
 
   // Custom InputTypes
@@ -1199,14 +1199,14 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSessionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SessionWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountAccountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AccountWhereInput
   }
 
@@ -1216,11 +1216,11 @@ export namespace Prisma {
    */
 
   export type AccountCountOutputType = {
-    transaction: number
+    transactions: number
   }
 
   export type AccountCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    transaction?: boolean | AccountCountOutputTypeCountTransactionArgs
+    transactions?: boolean | AccountCountOutputTypeCountTransactionsArgs
   }
 
   // Custom InputTypes
@@ -1237,7 +1237,7 @@ export namespace Prisma {
   /**
    * AccountCountOutputType without action
    */
-  export type AccountCountOutputTypeCountTransactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AccountCountOutputTypeCountTransactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TransactionWhereInput
   }
 
@@ -1260,30 +1260,27 @@ export namespace Prisma {
     id: string | null
     name: string | null
     email: string | null
-    password: string | null
+    password_hash: string | null
     phone: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
     name: string | null
     email: string | null
-    password: string | null
+    password_hash: string | null
     phone: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
+    created_at: Date | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     name: number
     email: number
-    password: number
+    password_hash: number
     phone: number
-    createdAt: number
-    updatedAt: number
+    created_at: number
     _all: number
   }
 
@@ -1292,30 +1289,27 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
-    password?: true
+    password_hash?: true
     phone?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     name?: true
     email?: true
-    password?: true
+    password_hash?: true
     phone?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     name?: true
     email?: true
-    password?: true
+    password_hash?: true
     phone?: true
-    createdAt?: true
-    updatedAt?: true
+    created_at?: true
     _all?: true
   }
 
@@ -1395,10 +1389,9 @@ export namespace Prisma {
     id: string
     name: string
     email: string
-    password: string | null
+    password_hash: string | null
     phone: string | null
-    createdAt: Date
-    updatedAt: Date
+    created_at: Date
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1422,12 +1415,11 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    password?: boolean
+    password_hash?: boolean
     phone?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-    Session?: boolean | User$SessionArgs<ExtArgs>
-    Account?: boolean | User$AccountArgs<ExtArgs>
+    created_at?: boolean
+    sessions?: boolean | User$sessionsArgs<ExtArgs>
+    accounts?: boolean | User$accountsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1435,36 +1427,33 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    password?: boolean
+    password_hash?: boolean
     phone?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     email?: boolean
-    password?: boolean
+    password_hash?: boolean
     phone?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     name?: boolean
     email?: boolean
-    password?: boolean
+    password_hash?: boolean
     phone?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
+    created_at?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "phone" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password_hash" | "phone" | "created_at", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Session?: boolean | User$SessionArgs<ExtArgs>
-    Account?: boolean | User$AccountArgs<ExtArgs>
+    sessions?: boolean | User$sessionsArgs<ExtArgs>
+    accounts?: boolean | User$accountsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1473,17 +1462,16 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      Session: Prisma.$SessionPayload<ExtArgs>[]
-      Account: Prisma.$AccountPayload<ExtArgs>[]
+      sessions: Prisma.$SessionPayload<ExtArgs>[]
+      accounts: Prisma.$AccountPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
       email: string
-      password: string | null
+      password_hash: string | null
       phone: string | null
-      createdAt: Date
-      updatedAt: Date
+      created_at: Date
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1878,8 +1866,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Session<T extends User$SessionArgs<ExtArgs> = {}>(args?: Subset<T, User$SessionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    Account<T extends User$AccountArgs<ExtArgs> = {}>(args?: Subset<T, User$AccountArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1912,10 +1900,9 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly password: FieldRef<"User", 'String'>
+    readonly password_hash: FieldRef<"User", 'String'>
     readonly phone: FieldRef<"User", 'String'>
-    readonly createdAt: FieldRef<"User", 'DateTime'>
-    readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly created_at: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -2304,9 +2291,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.Session
+   * User.sessions
    */
-  export type User$SessionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Session
      */
@@ -2328,9 +2315,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.Account
+   * User.accounts
    */
-  export type User$AccountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Account
      */
@@ -2383,22 +2370,22 @@ export namespace Prisma {
   export type AccountMinAggregateOutputType = {
     id: string | null
     name: string | null
-    userId: string | null
-    createdAt: Date | null
+    user_id: string | null
+    created_at: Date | null
   }
 
   export type AccountMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    userId: string | null
-    createdAt: Date | null
+    user_id: string | null
+    created_at: Date | null
   }
 
   export type AccountCountAggregateOutputType = {
     id: number
     name: number
-    userId: number
-    createdAt: number
+    user_id: number
+    created_at: number
     _all: number
   }
 
@@ -2406,22 +2393,22 @@ export namespace Prisma {
   export type AccountMinAggregateInputType = {
     id?: true
     name?: true
-    userId?: true
-    createdAt?: true
+    user_id?: true
+    created_at?: true
   }
 
   export type AccountMaxAggregateInputType = {
     id?: true
     name?: true
-    userId?: true
-    createdAt?: true
+    user_id?: true
+    created_at?: true
   }
 
   export type AccountCountAggregateInputType = {
     id?: true
     name?: true
-    userId?: true
-    createdAt?: true
+    user_id?: true
+    created_at?: true
     _all?: true
   }
 
@@ -2500,8 +2487,8 @@ export namespace Prisma {
   export type AccountGroupByOutputType = {
     id: string
     name: string
-    userId: string
-    createdAt: Date
+    user_id: string
+    created_at: Date
     _count: AccountCountAggregateOutputType | null
     _min: AccountMinAggregateOutputType | null
     _max: AccountMaxAggregateOutputType | null
@@ -2524,40 +2511,40 @@ export namespace Prisma {
   export type AccountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    userId?: boolean
-    createdAt?: boolean
+    user_id?: boolean
+    created_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    transaction?: boolean | Account$transactionArgs<ExtArgs>
+    transactions?: boolean | Account$transactionsArgs<ExtArgs>
     _count?: boolean | AccountCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["account"]>
 
   export type AccountSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    userId?: boolean
-    createdAt?: boolean
+    user_id?: boolean
+    created_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["account"]>
 
   export type AccountSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    userId?: boolean
-    createdAt?: boolean
+    user_id?: boolean
+    created_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["account"]>
 
   export type AccountSelectScalar = {
     id?: boolean
     name?: boolean
-    userId?: boolean
-    createdAt?: boolean
+    user_id?: boolean
+    created_at?: boolean
   }
 
-  export type AccountOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "createdAt", ExtArgs["result"]["account"]>
+  export type AccountOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "user_id" | "created_at", ExtArgs["result"]["account"]>
   export type AccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    transaction?: boolean | Account$transactionArgs<ExtArgs>
+    transactions?: boolean | Account$transactionsArgs<ExtArgs>
     _count?: boolean | AccountCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AccountIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2571,13 +2558,13 @@ export namespace Prisma {
     name: "Account"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      transaction: Prisma.$TransactionPayload<ExtArgs>[]
+      transactions: Prisma.$TransactionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      userId: string
-      createdAt: Date
+      user_id: string
+      created_at: Date
     }, ExtArgs["result"]["account"]>
     composites: {}
   }
@@ -2973,7 +2960,7 @@ export namespace Prisma {
   export interface Prisma__AccountClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    transaction<T extends Account$transactionArgs<ExtArgs> = {}>(args?: Subset<T, Account$transactionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    transactions<T extends Account$transactionsArgs<ExtArgs> = {}>(args?: Subset<T, Account$transactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3005,8 +2992,8 @@ export namespace Prisma {
   interface AccountFieldRefs {
     readonly id: FieldRef<"Account", 'String'>
     readonly name: FieldRef<"Account", 'String'>
-    readonly userId: FieldRef<"Account", 'String'>
-    readonly createdAt: FieldRef<"Account", 'DateTime'>
+    readonly user_id: FieldRef<"Account", 'String'>
+    readonly created_at: FieldRef<"Account", 'DateTime'>
   }
     
 
@@ -3403,9 +3390,9 @@ export namespace Prisma {
   }
 
   /**
-   * Account.transaction
+   * Account.transactions
    */
-  export type Account$transactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Account$transactionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Transaction
      */
@@ -3472,7 +3459,7 @@ export namespace Prisma {
     category: $Enums.Category | null
     type: $Enums.PaymentType | null
     date: Date | null
-    accountId: string | null
+    account_id: string | null
   }
 
   export type TransactionMaxAggregateOutputType = {
@@ -3482,7 +3469,7 @@ export namespace Prisma {
     category: $Enums.Category | null
     type: $Enums.PaymentType | null
     date: Date | null
-    accountId: string | null
+    account_id: string | null
   }
 
   export type TransactionCountAggregateOutputType = {
@@ -3492,7 +3479,7 @@ export namespace Prisma {
     category: number
     type: number
     date: number
-    accountId: number
+    account_id: number
     _all: number
   }
 
@@ -3512,7 +3499,7 @@ export namespace Prisma {
     category?: true
     type?: true
     date?: true
-    accountId?: true
+    account_id?: true
   }
 
   export type TransactionMaxAggregateInputType = {
@@ -3522,7 +3509,7 @@ export namespace Prisma {
     category?: true
     type?: true
     date?: true
-    accountId?: true
+    account_id?: true
   }
 
   export type TransactionCountAggregateInputType = {
@@ -3532,7 +3519,7 @@ export namespace Prisma {
     category?: true
     type?: true
     date?: true
-    accountId?: true
+    account_id?: true
     _all?: true
   }
 
@@ -3629,7 +3616,7 @@ export namespace Prisma {
     category: $Enums.Category
     type: $Enums.PaymentType
     date: Date
-    accountId: string
+    account_id: string
     _count: TransactionCountAggregateOutputType | null
     _avg: TransactionAvgAggregateOutputType | null
     _sum: TransactionSumAggregateOutputType | null
@@ -3658,7 +3645,7 @@ export namespace Prisma {
     category?: boolean
     type?: boolean
     date?: boolean
-    accountId?: boolean
+    account_id?: boolean
     Account?: boolean | AccountDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
@@ -3669,7 +3656,7 @@ export namespace Prisma {
     category?: boolean
     type?: boolean
     date?: boolean
-    accountId?: boolean
+    account_id?: boolean
     Account?: boolean | AccountDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
@@ -3680,7 +3667,7 @@ export namespace Prisma {
     category?: boolean
     type?: boolean
     date?: boolean
-    accountId?: boolean
+    account_id?: boolean
     Account?: boolean | AccountDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
@@ -3691,10 +3678,10 @@ export namespace Prisma {
     category?: boolean
     type?: boolean
     date?: boolean
-    accountId?: boolean
+    account_id?: boolean
   }
 
-  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "amount" | "category" | "type" | "date" | "accountId", ExtArgs["result"]["transaction"]>
+  export type TransactionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "description" | "amount" | "category" | "type" | "date" | "account_id", ExtArgs["result"]["transaction"]>
   export type TransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Account?: boolean | AccountDefaultArgs<ExtArgs>
   }
@@ -3717,7 +3704,7 @@ export namespace Prisma {
       category: $Enums.Category
       type: $Enums.PaymentType
       date: Date
-      accountId: string
+      account_id: string
     }, ExtArgs["result"]["transaction"]>
     composites: {}
   }
@@ -4148,7 +4135,7 @@ export namespace Prisma {
     readonly category: FieldRef<"Transaction", 'Category'>
     readonly type: FieldRef<"Transaction", 'PaymentType'>
     readonly date: FieldRef<"Transaction", 'DateTime'>
-    readonly accountId: FieldRef<"Transaction", 'String'>
+    readonly account_id: FieldRef<"Transaction", 'String'>
   }
     
 
@@ -4575,46 +4562,46 @@ export namespace Prisma {
 
   export type SessionMinAggregateOutputType = {
     id: string | null
-    userId: string | null
+    user_id: string | null
     token: string | null
-    createdAt: Date | null
+    created_at: Date | null
   }
 
   export type SessionMaxAggregateOutputType = {
     id: string | null
-    userId: string | null
+    user_id: string | null
     token: string | null
-    createdAt: Date | null
+    created_at: Date | null
   }
 
   export type SessionCountAggregateOutputType = {
     id: number
-    userId: number
+    user_id: number
     token: number
-    createdAt: number
+    created_at: number
     _all: number
   }
 
 
   export type SessionMinAggregateInputType = {
     id?: true
-    userId?: true
+    user_id?: true
     token?: true
-    createdAt?: true
+    created_at?: true
   }
 
   export type SessionMaxAggregateInputType = {
     id?: true
-    userId?: true
+    user_id?: true
     token?: true
-    createdAt?: true
+    created_at?: true
   }
 
   export type SessionCountAggregateInputType = {
     id?: true
-    userId?: true
+    user_id?: true
     token?: true
-    createdAt?: true
+    created_at?: true
     _all?: true
   }
 
@@ -4692,9 +4679,9 @@ export namespace Prisma {
 
   export type SessionGroupByOutputType = {
     id: string
-    userId: string
+    user_id: string
     token: string
-    createdAt: Date
+    created_at: Date
     _count: SessionCountAggregateOutputType | null
     _min: SessionMinAggregateOutputType | null
     _max: SessionMaxAggregateOutputType | null
@@ -4716,36 +4703,36 @@ export namespace Prisma {
 
   export type SessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
+    user_id?: boolean
     token?: boolean
-    createdAt?: boolean
+    created_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["session"]>
 
   export type SessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
+    user_id?: boolean
     token?: boolean
-    createdAt?: boolean
+    created_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["session"]>
 
   export type SessionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    userId?: boolean
+    user_id?: boolean
     token?: boolean
-    createdAt?: boolean
+    created_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["session"]>
 
   export type SessionSelectScalar = {
     id?: boolean
-    userId?: boolean
+    user_id?: boolean
     token?: boolean
-    createdAt?: boolean
+    created_at?: boolean
   }
 
-  export type SessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "token" | "createdAt", ExtArgs["result"]["session"]>
+  export type SessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "token" | "created_at", ExtArgs["result"]["session"]>
   export type SessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -4763,9 +4750,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      userId: string
+      user_id: string
       token: string
-      createdAt: Date
+      created_at: Date
     }, ExtArgs["result"]["session"]>
     composites: {}
   }
@@ -5191,9 +5178,9 @@ export namespace Prisma {
    */
   interface SessionFieldRefs {
     readonly id: FieldRef<"Session", 'String'>
-    readonly userId: FieldRef<"Session", 'String'>
+    readonly user_id: FieldRef<"Session", 'String'>
     readonly token: FieldRef<"Session", 'String'>
-    readonly createdAt: FieldRef<"Session", 'DateTime'>
+    readonly created_at: FieldRef<"Session", 'DateTime'>
   }
     
 
@@ -5626,10 +5613,9 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     email: 'email',
-    password: 'password',
+    password_hash: 'password_hash',
     phone: 'phone',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    created_at: 'created_at'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -5638,8 +5624,8 @@ export namespace Prisma {
   export const AccountScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    userId: 'userId',
-    createdAt: 'createdAt'
+    user_id: 'user_id',
+    created_at: 'created_at'
   };
 
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
@@ -5652,7 +5638,7 @@ export namespace Prisma {
     category: 'category',
     type: 'type',
     date: 'date',
-    accountId: 'accountId'
+    account_id: 'account_id'
   };
 
   export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
@@ -5660,9 +5646,9 @@ export namespace Prisma {
 
   export const SessionScalarFieldEnum: {
     id: 'id',
-    userId: 'userId',
+    user_id: 'user_id',
     token: 'token',
-    createdAt: 'createdAt'
+    created_at: 'created_at'
   };
 
   export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
@@ -5791,24 +5777,22 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
-    password?: StringNullableFilter<"User"> | string | null
+    password_hash?: StringNullableFilter<"User"> | string | null
     phone?: StringNullableFilter<"User"> | string | null
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
-    Session?: SessionListRelationFilter
-    Account?: AccountListRelationFilter
+    created_at?: DateTimeFilter<"User"> | Date | string
+    sessions?: SessionListRelationFilter
+    accounts?: AccountListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    password?: SortOrderInput | SortOrder
+    password_hash?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    Session?: SessionOrderByRelationAggregateInput
-    Account?: AccountOrderByRelationAggregateInput
+    created_at?: SortOrder
+    sessions?: SessionOrderByRelationAggregateInput
+    accounts?: AccountOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -5819,21 +5803,19 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
-    password?: StringNullableFilter<"User"> | string | null
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
-    Session?: SessionListRelationFilter
-    Account?: AccountListRelationFilter
+    password_hash?: StringNullableFilter<"User"> | string | null
+    created_at?: DateTimeFilter<"User"> | Date | string
+    sessions?: SessionListRelationFilter
+    accounts?: AccountListRelationFilter
   }, "id" | "email" | "phone">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    password?: SortOrderInput | SortOrder
+    password_hash?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -5846,10 +5828,9 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
-    password?: StringNullableWithAggregatesFilter<"User"> | string | null
+    password_hash?: StringNullableWithAggregatesFilter<"User"> | string | null
     phone?: StringNullableWithAggregatesFilter<"User"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
   export type AccountWhereInput = {
@@ -5858,19 +5839,19 @@ export namespace Prisma {
     NOT?: AccountWhereInput | AccountWhereInput[]
     id?: StringFilter<"Account"> | string
     name?: StringFilter<"Account"> | string
-    userId?: StringFilter<"Account"> | string
-    createdAt?: DateTimeFilter<"Account"> | Date | string
+    user_id?: StringFilter<"Account"> | string
+    created_at?: DateTimeFilter<"Account"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    transaction?: TransactionListRelationFilter
+    transactions?: TransactionListRelationFilter
   }
 
   export type AccountOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
+    user_id?: SortOrder
+    created_at?: SortOrder
     user?: UserOrderByWithRelationInput
-    transaction?: TransactionOrderByRelationAggregateInput
+    transactions?: TransactionOrderByRelationAggregateInput
   }
 
   export type AccountWhereUniqueInput = Prisma.AtLeast<{
@@ -5879,17 +5860,17 @@ export namespace Prisma {
     OR?: AccountWhereInput[]
     NOT?: AccountWhereInput | AccountWhereInput[]
     name?: StringFilter<"Account"> | string
-    userId?: StringFilter<"Account"> | string
-    createdAt?: DateTimeFilter<"Account"> | Date | string
+    user_id?: StringFilter<"Account"> | string
+    created_at?: DateTimeFilter<"Account"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    transaction?: TransactionListRelationFilter
+    transactions?: TransactionListRelationFilter
   }, "id">
 
   export type AccountOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
+    user_id?: SortOrder
+    created_at?: SortOrder
     _count?: AccountCountOrderByAggregateInput
     _max?: AccountMaxOrderByAggregateInput
     _min?: AccountMinOrderByAggregateInput
@@ -5901,8 +5882,8 @@ export namespace Prisma {
     NOT?: AccountScalarWhereWithAggregatesInput | AccountScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Account"> | string
     name?: StringWithAggregatesFilter<"Account"> | string
-    userId?: StringWithAggregatesFilter<"Account"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Account"> | Date | string
+    user_id?: StringWithAggregatesFilter<"Account"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Account"> | Date | string
   }
 
   export type TransactionWhereInput = {
@@ -5915,7 +5896,7 @@ export namespace Prisma {
     category?: EnumCategoryFilter<"Transaction"> | $Enums.Category
     type?: EnumPaymentTypeFilter<"Transaction"> | $Enums.PaymentType
     date?: DateTimeFilter<"Transaction"> | Date | string
-    accountId?: StringFilter<"Transaction"> | string
+    account_id?: StringFilter<"Transaction"> | string
     Account?: XOR<AccountScalarRelationFilter, AccountWhereInput>
   }
 
@@ -5926,7 +5907,7 @@ export namespace Prisma {
     category?: SortOrder
     type?: SortOrder
     date?: SortOrder
-    accountId?: SortOrder
+    account_id?: SortOrder
     Account?: AccountOrderByWithRelationInput
   }
 
@@ -5940,7 +5921,7 @@ export namespace Prisma {
     category?: EnumCategoryFilter<"Transaction"> | $Enums.Category
     type?: EnumPaymentTypeFilter<"Transaction"> | $Enums.PaymentType
     date?: DateTimeFilter<"Transaction"> | Date | string
-    accountId?: StringFilter<"Transaction"> | string
+    account_id?: StringFilter<"Transaction"> | string
     Account?: XOR<AccountScalarRelationFilter, AccountWhereInput>
   }, "id">
 
@@ -5951,7 +5932,7 @@ export namespace Prisma {
     category?: SortOrder
     type?: SortOrder
     date?: SortOrder
-    accountId?: SortOrder
+    account_id?: SortOrder
     _count?: TransactionCountOrderByAggregateInput
     _avg?: TransactionAvgOrderByAggregateInput
     _max?: TransactionMaxOrderByAggregateInput
@@ -5969,7 +5950,7 @@ export namespace Prisma {
     category?: EnumCategoryWithAggregatesFilter<"Transaction"> | $Enums.Category
     type?: EnumPaymentTypeWithAggregatesFilter<"Transaction"> | $Enums.PaymentType
     date?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
-    accountId?: StringWithAggregatesFilter<"Transaction"> | string
+    account_id?: StringWithAggregatesFilter<"Transaction"> | string
   }
 
   export type SessionWhereInput = {
@@ -5977,17 +5958,17 @@ export namespace Prisma {
     OR?: SessionWhereInput[]
     NOT?: SessionWhereInput | SessionWhereInput[]
     id?: StringFilter<"Session"> | string
-    userId?: StringFilter<"Session"> | string
+    user_id?: StringFilter<"Session"> | string
     token?: StringFilter<"Session"> | string
-    createdAt?: DateTimeFilter<"Session"> | Date | string
+    created_at?: DateTimeFilter<"Session"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type SessionOrderByWithRelationInput = {
     id?: SortOrder
-    userId?: SortOrder
+    user_id?: SortOrder
     token?: SortOrder
-    createdAt?: SortOrder
+    created_at?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -5997,16 +5978,16 @@ export namespace Prisma {
     AND?: SessionWhereInput | SessionWhereInput[]
     OR?: SessionWhereInput[]
     NOT?: SessionWhereInput | SessionWhereInput[]
-    userId?: StringFilter<"Session"> | string
-    createdAt?: DateTimeFilter<"Session"> | Date | string
+    user_id?: StringFilter<"Session"> | string
+    created_at?: DateTimeFilter<"Session"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "token">
 
   export type SessionOrderByWithAggregationInput = {
     id?: SortOrder
-    userId?: SortOrder
+    user_id?: SortOrder
     token?: SortOrder
-    createdAt?: SortOrder
+    created_at?: SortOrder
     _count?: SessionCountOrderByAggregateInput
     _max?: SessionMaxOrderByAggregateInput
     _min?: SessionMinOrderByAggregateInput
@@ -6017,139 +5998,132 @@ export namespace Prisma {
     OR?: SessionScalarWhereWithAggregatesInput[]
     NOT?: SessionScalarWhereWithAggregatesInput | SessionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Session"> | string
-    userId?: StringWithAggregatesFilter<"Session"> | string
+    user_id?: StringWithAggregatesFilter<"Session"> | string
     token?: StringWithAggregatesFilter<"Session"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"Session"> | Date | string
   }
 
   export type UserCreateInput = {
     id?: string
     name: string
     email: string
-    password?: string | null
+    password_hash?: string | null
     phone?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    Session?: SessionCreateNestedManyWithoutUserInput
-    Account?: AccountCreateNestedManyWithoutUserInput
+    created_at?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
     name: string
     email: string
-    password?: string | null
+    password_hash?: string | null
     phone?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    Session?: SessionUncheckedCreateNestedManyWithoutUserInput
-    Account?: AccountUncheckedCreateNestedManyWithoutUserInput
+    created_at?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Session?: SessionUpdateManyWithoutUserNestedInput
-    Account?: AccountUpdateManyWithoutUserNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    Account?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: string
     name: string
     email: string
-    password?: string | null
+    password_hash?: string | null
     phone?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    created_at?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AccountCreateInput = {
     id?: string
     name: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutAccountInput
-    transaction?: TransactionCreateNestedManyWithoutAccountInput
+    created_at?: Date | string
+    user: UserCreateNestedOneWithoutAccountsInput
+    transactions?: TransactionCreateNestedManyWithoutAccountInput
   }
 
   export type AccountUncheckedCreateInput = {
     id?: string
     name: string
-    userId: string
-    createdAt?: Date | string
-    transaction?: TransactionUncheckedCreateNestedManyWithoutAccountInput
+    user_id: string
+    created_at?: Date | string
+    transactions?: TransactionUncheckedCreateNestedManyWithoutAccountInput
   }
 
   export type AccountUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutAccountNestedInput
-    transaction?: TransactionUpdateManyWithoutAccountNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAccountsNestedInput
+    transactions?: TransactionUpdateManyWithoutAccountNestedInput
   }
 
   export type AccountUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transaction?: TransactionUncheckedUpdateManyWithoutAccountNestedInput
+    user_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: TransactionUncheckedUpdateManyWithoutAccountNestedInput
   }
 
   export type AccountCreateManyInput = {
     id?: string
     name: string
-    userId: string
-    createdAt?: Date | string
+    user_id: string
+    created_at?: Date | string
   }
 
   export type AccountUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AccountUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TransactionCreateInput = {
@@ -6159,7 +6133,7 @@ export namespace Prisma {
     category: $Enums.Category
     type: $Enums.PaymentType
     date?: Date | string
-    Account: AccountCreateNestedOneWithoutTransactionInput
+    Account: AccountCreateNestedOneWithoutTransactionsInput
   }
 
   export type TransactionUncheckedCreateInput = {
@@ -6169,7 +6143,7 @@ export namespace Prisma {
     category: $Enums.Category
     type: $Enums.PaymentType
     date?: Date | string
-    accountId: string
+    account_id: string
   }
 
   export type TransactionUpdateInput = {
@@ -6179,7 +6153,7 @@ export namespace Prisma {
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
     type?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    Account?: AccountUpdateOneRequiredWithoutTransactionNestedInput
+    Account?: AccountUpdateOneRequiredWithoutTransactionsNestedInput
   }
 
   export type TransactionUncheckedUpdateInput = {
@@ -6189,7 +6163,7 @@ export namespace Prisma {
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
     type?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    accountId?: StringFieldUpdateOperationsInput | string
+    account_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type TransactionCreateManyInput = {
@@ -6199,7 +6173,7 @@ export namespace Prisma {
     category: $Enums.Category
     type: $Enums.PaymentType
     date?: Date | string
-    accountId: string
+    account_id: string
   }
 
   export type TransactionUpdateManyMutationInput = {
@@ -6218,55 +6192,55 @@ export namespace Prisma {
     category?: EnumCategoryFieldUpdateOperationsInput | $Enums.Category
     type?: EnumPaymentTypeFieldUpdateOperationsInput | $Enums.PaymentType
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    accountId?: StringFieldUpdateOperationsInput | string
+    account_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionCreateInput = {
     id?: string
     token: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutSessionInput
+    created_at?: Date | string
+    user: UserCreateNestedOneWithoutSessionsInput
   }
 
   export type SessionUncheckedCreateInput = {
     id?: string
-    userId: string
+    user_id: string
     token: string
-    createdAt?: Date | string
+    created_at?: Date | string
   }
 
   export type SessionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSessionNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSessionsNestedInput
   }
 
   export type SessionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SessionCreateManyInput = {
     id?: string
-    userId: string
+    user_id: string
     token: string
-    createdAt?: Date | string
+    created_at?: Date | string
   }
 
   export type SessionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SessionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6339,30 +6313,27 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    password?: SortOrder
+    password_hash?: SortOrder
     phone?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    password?: SortOrder
+    password_hash?: SortOrder
     phone?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    password?: SortOrder
+    password_hash?: SortOrder
     phone?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+    created_at?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6433,22 +6404,22 @@ export namespace Prisma {
   export type AccountCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
+    user_id?: SortOrder
+    created_at?: SortOrder
   }
 
   export type AccountMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
+    user_id?: SortOrder
+    created_at?: SortOrder
   }
 
   export type AccountMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
+    user_id?: SortOrder
+    created_at?: SortOrder
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -6488,7 +6459,7 @@ export namespace Prisma {
     category?: SortOrder
     type?: SortOrder
     date?: SortOrder
-    accountId?: SortOrder
+    account_id?: SortOrder
   }
 
   export type TransactionAvgOrderByAggregateInput = {
@@ -6502,7 +6473,7 @@ export namespace Prisma {
     category?: SortOrder
     type?: SortOrder
     date?: SortOrder
-    accountId?: SortOrder
+    account_id?: SortOrder
   }
 
   export type TransactionMinOrderByAggregateInput = {
@@ -6512,7 +6483,7 @@ export namespace Prisma {
     category?: SortOrder
     type?: SortOrder
     date?: SortOrder
-    accountId?: SortOrder
+    account_id?: SortOrder
   }
 
   export type TransactionSumOrderByAggregateInput = {
@@ -6557,23 +6528,23 @@ export namespace Prisma {
 
   export type SessionCountOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
+    user_id?: SortOrder
     token?: SortOrder
-    createdAt?: SortOrder
+    created_at?: SortOrder
   }
 
   export type SessionMaxOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
+    user_id?: SortOrder
     token?: SortOrder
-    createdAt?: SortOrder
+    created_at?: SortOrder
   }
 
   export type SessionMinOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
+    user_id?: SortOrder
     token?: SortOrder
-    createdAt?: SortOrder
+    created_at?: SortOrder
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
@@ -6672,9 +6643,9 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutAccountInput = {
-    create?: XOR<UserCreateWithoutAccountInput, UserUncheckedCreateWithoutAccountInput>
-    connectOrCreate?: UserCreateOrConnectWithoutAccountInput
+  export type UserCreateNestedOneWithoutAccountsInput = {
+    create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
     connect?: UserWhereUniqueInput
   }
 
@@ -6692,12 +6663,12 @@ export namespace Prisma {
     connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
-  export type UserUpdateOneRequiredWithoutAccountNestedInput = {
-    create?: XOR<UserCreateWithoutAccountInput, UserUncheckedCreateWithoutAccountInput>
-    connectOrCreate?: UserCreateOrConnectWithoutAccountInput
-    upsert?: UserUpsertWithoutAccountInput
+  export type UserUpdateOneRequiredWithoutAccountsNestedInput = {
+    create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
+    upsert?: UserUpsertWithoutAccountsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountInput, UserUpdateWithoutAccountInput>, UserUncheckedUpdateWithoutAccountInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
   }
 
   export type TransactionUpdateManyWithoutAccountNestedInput = {
@@ -6728,9 +6699,9 @@ export namespace Prisma {
     deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
-  export type AccountCreateNestedOneWithoutTransactionInput = {
-    create?: XOR<AccountCreateWithoutTransactionInput, AccountUncheckedCreateWithoutTransactionInput>
-    connectOrCreate?: AccountCreateOrConnectWithoutTransactionInput
+  export type AccountCreateNestedOneWithoutTransactionsInput = {
+    create?: XOR<AccountCreateWithoutTransactionsInput, AccountUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: AccountCreateOrConnectWithoutTransactionsInput
     connect?: AccountWhereUniqueInput
   }
 
@@ -6750,26 +6721,26 @@ export namespace Prisma {
     set?: $Enums.PaymentType
   }
 
-  export type AccountUpdateOneRequiredWithoutTransactionNestedInput = {
-    create?: XOR<AccountCreateWithoutTransactionInput, AccountUncheckedCreateWithoutTransactionInput>
-    connectOrCreate?: AccountCreateOrConnectWithoutTransactionInput
-    upsert?: AccountUpsertWithoutTransactionInput
+  export type AccountUpdateOneRequiredWithoutTransactionsNestedInput = {
+    create?: XOR<AccountCreateWithoutTransactionsInput, AccountUncheckedCreateWithoutTransactionsInput>
+    connectOrCreate?: AccountCreateOrConnectWithoutTransactionsInput
+    upsert?: AccountUpsertWithoutTransactionsInput
     connect?: AccountWhereUniqueInput
-    update?: XOR<XOR<AccountUpdateToOneWithWhereWithoutTransactionInput, AccountUpdateWithoutTransactionInput>, AccountUncheckedUpdateWithoutTransactionInput>
+    update?: XOR<XOR<AccountUpdateToOneWithWhereWithoutTransactionsInput, AccountUpdateWithoutTransactionsInput>, AccountUncheckedUpdateWithoutTransactionsInput>
   }
 
-  export type UserCreateNestedOneWithoutSessionInput = {
-    create?: XOR<UserCreateWithoutSessionInput, UserUncheckedCreateWithoutSessionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSessionInput
+  export type UserCreateNestedOneWithoutSessionsInput = {
+    create?: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSessionsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutSessionNestedInput = {
-    create?: XOR<UserCreateWithoutSessionInput, UserUncheckedCreateWithoutSessionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSessionInput
-    upsert?: UserUpsertWithoutSessionInput
+  export type UserUpdateOneRequiredWithoutSessionsNestedInput = {
+    create?: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSessionsInput
+    upsert?: UserUpsertWithoutSessionsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionInput, UserUpdateWithoutSessionInput>, UserUncheckedUpdateWithoutSessionInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6945,13 +6916,13 @@ export namespace Prisma {
   export type SessionCreateWithoutUserInput = {
     id?: string
     token: string
-    createdAt?: Date | string
+    created_at?: Date | string
   }
 
   export type SessionUncheckedCreateWithoutUserInput = {
     id?: string
     token: string
-    createdAt?: Date | string
+    created_at?: Date | string
   }
 
   export type SessionCreateOrConnectWithoutUserInput = {
@@ -6967,15 +6938,15 @@ export namespace Prisma {
   export type AccountCreateWithoutUserInput = {
     id?: string
     name: string
-    createdAt?: Date | string
-    transaction?: TransactionCreateNestedManyWithoutAccountInput
+    created_at?: Date | string
+    transactions?: TransactionCreateNestedManyWithoutAccountInput
   }
 
   export type AccountUncheckedCreateWithoutUserInput = {
     id?: string
     name: string
-    createdAt?: Date | string
-    transaction?: TransactionUncheckedCreateNestedManyWithoutAccountInput
+    created_at?: Date | string
+    transactions?: TransactionUncheckedCreateNestedManyWithoutAccountInput
   }
 
   export type AccountCreateOrConnectWithoutUserInput = {
@@ -7009,9 +6980,9 @@ export namespace Prisma {
     OR?: SessionScalarWhereInput[]
     NOT?: SessionScalarWhereInput | SessionScalarWhereInput[]
     id?: StringFilter<"Session"> | string
-    userId?: StringFilter<"Session"> | string
+    user_id?: StringFilter<"Session"> | string
     token?: StringFilter<"Session"> | string
-    createdAt?: DateTimeFilter<"Session"> | Date | string
+    created_at?: DateTimeFilter<"Session"> | Date | string
   }
 
   export type AccountUpsertWithWhereUniqueWithoutUserInput = {
@@ -7036,35 +7007,33 @@ export namespace Prisma {
     NOT?: AccountScalarWhereInput | AccountScalarWhereInput[]
     id?: StringFilter<"Account"> | string
     name?: StringFilter<"Account"> | string
-    userId?: StringFilter<"Account"> | string
-    createdAt?: DateTimeFilter<"Account"> | Date | string
+    user_id?: StringFilter<"Account"> | string
+    created_at?: DateTimeFilter<"Account"> | Date | string
   }
 
-  export type UserCreateWithoutAccountInput = {
+  export type UserCreateWithoutAccountsInput = {
     id?: string
     name: string
     email: string
-    password?: string | null
+    password_hash?: string | null
     phone?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    Session?: SessionCreateNestedManyWithoutUserInput
+    created_at?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutAccountInput = {
+  export type UserUncheckedCreateWithoutAccountsInput = {
     id?: string
     name: string
     email: string
-    password?: string | null
+    password_hash?: string | null
     phone?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    Session?: SessionUncheckedCreateNestedManyWithoutUserInput
+    created_at?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutAccountInput = {
+  export type UserCreateOrConnectWithoutAccountsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutAccountInput, UserUncheckedCreateWithoutAccountInput>
+    create: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
   }
 
   export type TransactionCreateWithoutAccountInput = {
@@ -7095,37 +7064,35 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutAccountInput = {
-    update: XOR<UserUpdateWithoutAccountInput, UserUncheckedUpdateWithoutAccountInput>
-    create: XOR<UserCreateWithoutAccountInput, UserUncheckedCreateWithoutAccountInput>
+  export type UserUpsertWithoutAccountsInput = {
+    update: XOR<UserUpdateWithoutAccountsInput, UserUncheckedUpdateWithoutAccountsInput>
+    create: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutAccountInput = {
+  export type UserUpdateToOneWithWhereWithoutAccountsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutAccountInput, UserUncheckedUpdateWithoutAccountInput>
+    data: XOR<UserUpdateWithoutAccountsInput, UserUncheckedUpdateWithoutAccountsInput>
   }
 
-  export type UserUpdateWithoutAccountInput = {
+  export type UserUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Session?: SessionUpdateManyWithoutUserNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutAccountInput = {
+  export type UserUncheckedUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Session?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TransactionUpsertWithWhereUniqueWithoutAccountInput = {
@@ -7154,161 +7121,157 @@ export namespace Prisma {
     category?: EnumCategoryFilter<"Transaction"> | $Enums.Category
     type?: EnumPaymentTypeFilter<"Transaction"> | $Enums.PaymentType
     date?: DateTimeFilter<"Transaction"> | Date | string
-    accountId?: StringFilter<"Transaction"> | string
+    account_id?: StringFilter<"Transaction"> | string
   }
 
-  export type AccountCreateWithoutTransactionInput = {
+  export type AccountCreateWithoutTransactionsInput = {
     id?: string
     name: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutAccountInput
+    created_at?: Date | string
+    user: UserCreateNestedOneWithoutAccountsInput
   }
 
-  export type AccountUncheckedCreateWithoutTransactionInput = {
+  export type AccountUncheckedCreateWithoutTransactionsInput = {
     id?: string
     name: string
-    userId: string
-    createdAt?: Date | string
+    user_id: string
+    created_at?: Date | string
   }
 
-  export type AccountCreateOrConnectWithoutTransactionInput = {
+  export type AccountCreateOrConnectWithoutTransactionsInput = {
     where: AccountWhereUniqueInput
-    create: XOR<AccountCreateWithoutTransactionInput, AccountUncheckedCreateWithoutTransactionInput>
+    create: XOR<AccountCreateWithoutTransactionsInput, AccountUncheckedCreateWithoutTransactionsInput>
   }
 
-  export type AccountUpsertWithoutTransactionInput = {
-    update: XOR<AccountUpdateWithoutTransactionInput, AccountUncheckedUpdateWithoutTransactionInput>
-    create: XOR<AccountCreateWithoutTransactionInput, AccountUncheckedCreateWithoutTransactionInput>
+  export type AccountUpsertWithoutTransactionsInput = {
+    update: XOR<AccountUpdateWithoutTransactionsInput, AccountUncheckedUpdateWithoutTransactionsInput>
+    create: XOR<AccountCreateWithoutTransactionsInput, AccountUncheckedCreateWithoutTransactionsInput>
     where?: AccountWhereInput
   }
 
-  export type AccountUpdateToOneWithWhereWithoutTransactionInput = {
+  export type AccountUpdateToOneWithWhereWithoutTransactionsInput = {
     where?: AccountWhereInput
-    data: XOR<AccountUpdateWithoutTransactionInput, AccountUncheckedUpdateWithoutTransactionInput>
+    data: XOR<AccountUpdateWithoutTransactionsInput, AccountUncheckedUpdateWithoutTransactionsInput>
   }
 
-  export type AccountUpdateWithoutTransactionInput = {
+  export type AccountUpdateWithoutTransactionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutAccountNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAccountsNestedInput
   }
 
-  export type AccountUncheckedUpdateWithoutTransactionInput = {
+  export type AccountUncheckedUpdateWithoutTransactionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCreateWithoutSessionInput = {
+  export type UserCreateWithoutSessionsInput = {
     id?: string
     name: string
     email: string
-    password?: string | null
+    password_hash?: string | null
     phone?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    Account?: AccountCreateNestedManyWithoutUserInput
+    created_at?: Date | string
+    accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutSessionInput = {
+  export type UserUncheckedCreateWithoutSessionsInput = {
     id?: string
     name: string
     email: string
-    password?: string | null
+    password_hash?: string | null
     phone?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    Account?: AccountUncheckedCreateNestedManyWithoutUserInput
+    created_at?: Date | string
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutSessionInput = {
+  export type UserCreateOrConnectWithoutSessionsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSessionInput, UserUncheckedCreateWithoutSessionInput>
+    create: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
   }
 
-  export type UserUpsertWithoutSessionInput = {
-    update: XOR<UserUpdateWithoutSessionInput, UserUncheckedUpdateWithoutSessionInput>
-    create: XOR<UserCreateWithoutSessionInput, UserUncheckedCreateWithoutSessionInput>
+  export type UserUpsertWithoutSessionsInput = {
+    update: XOR<UserUpdateWithoutSessionsInput, UserUncheckedUpdateWithoutSessionsInput>
+    create: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutSessionInput = {
+  export type UserUpdateToOneWithWhereWithoutSessionsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSessionInput, UserUncheckedUpdateWithoutSessionInput>
+    data: XOR<UserUpdateWithoutSessionsInput, UserUncheckedUpdateWithoutSessionsInput>
   }
 
-  export type UserUpdateWithoutSessionInput = {
+  export type UserUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Account?: AccountUpdateManyWithoutUserNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutSessionInput = {
+  export type UserUncheckedUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    password_hash?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Account?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SessionCreateManyUserInput = {
     id?: string
     token: string
-    createdAt?: Date | string
+    created_at?: Date | string
   }
 
   export type AccountCreateManyUserInput = {
     id?: string
     name: string
-    createdAt?: Date | string
+    created_at?: Date | string
   }
 
   export type SessionUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SessionUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SessionUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     token?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transaction?: TransactionUpdateManyWithoutAccountNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: TransactionUpdateManyWithoutAccountNestedInput
   }
 
   export type AccountUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    transaction?: TransactionUncheckedUpdateManyWithoutAccountNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    transactions?: TransactionUncheckedUpdateManyWithoutAccountNestedInput
   }
 
   export type AccountUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TransactionCreateManyAccountInput = {

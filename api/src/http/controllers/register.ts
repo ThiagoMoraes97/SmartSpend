@@ -1,7 +1,8 @@
 import z from "zod";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { prisma } from "@/lib/prisma";
-import { hash } from "bcryptjs";
+import { RegisterUserUseCase } from "@/use-cases/register";
+import { PrismaUsersRepository } from "@/repositories/prisma/prisma-users-repository";
+
 
 export async function register(request: FastifyRequest, reply: FastifyReply){
   const registerBodySchema = z.object({
@@ -13,36 +14,22 @@ export async function register(request: FastifyRequest, reply: FastifyReply){
 
   const { name, email, password, phone } = registerBodySchema.parse(request.body);
 
-  const userWithSameEmail = await prisma.user.findUnique({
-    where: {
-      email,
-    },
-  });
+  const prismaUsersRepository = new PrismaUsersRepository();
+  const registerUserUseCase = new RegisterUserUseCase(prismaUsersRepository);
 
-  if (userWithSameEmail) {
-    return reply.status(409).send({
-      message: "User already exists",
-    });
-  }
-
-  const hashedPassword = await hash(password, 6);
-
-  const user = await prisma.user.create({
-    data: {
+  try {
+    await registerUserUseCase.execute({
       name,
       email,
-      password: hashedPassword,
+      password,
       phone,
-    },
-  });
+    })
+  } catch (error) {
+    return reply.status(409).send({
+      message: error instanceof Error ? error.message : "Internal Server Error",
+    });
 
-  return reply.status(201).send({
-    message: "User registered successfully",
-    user: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      phone: user.phone,
-    },
-  });
+  }
+  
+  return reply.status(201).send();
 }
