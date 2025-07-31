@@ -3,23 +3,52 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BadgeDollarSign } from "lucide-react";
 import { Link } from "react-router";
+import { useForm } from "react-hook-form";
+import z from "zod";
+import { useMutation } from "@tanstack/react-query";
+
+const SignInSchema = z.object({
+  email: z.string().email("E-mail inválido!"),
+  password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
+});
+
+type SignInFormData = z.infer<typeof SignInSchema>;
 
 
 export function SignIn() {
+
+  const { register, handleSubmit } = useForm<SignInFormData>();
+
+  const { mutateAsync: signIn } =  useMutation({
+    mutationFn: handleSignIn,
+    onSuccess: () => {
+      // Lógica após o sucesso do login, como redirecionar o usuário
+      console.log("Login realizado com sucesso!");
+    },
+    onError: (error) => {
+      // Lógica para tratar erros de login
+      console.error("Erro ao realizar login:", error);
+    }
+  })
+  
+  async function handleSignIn(data: SignInFormData) {
+    signIn(data);
+  }
+
   return(
     <div className="flex flex-col items-center justify-center gap-2 p-6 w-md">
       <BadgeDollarSign className="w-16 h-16 text-primary" />
       <h1 className="text-2xl font-bold tracking-tighter">Bem-vindo ao SmartSpend</h1>
       <p className="text-sm text-foreground">Não possui uma conta? <Link to="/sign-up" className="text-muted-foreground underline">Crie agora!</Link></p>
 
-      <form className="flex flex-col gap-6 p-6 w-full">
+      <form className="flex flex-col gap-6 p-6 w-full" onSubmit={handleSubmit(handleSignIn)}>
         <div className="flex flex-col gap-3">
           <Label htmlFor="email">E-mail</Label>
-          <Input id="email" type="email" placeholder="Digite seu e-mail"  />
+          <Input id="email" type="email" placeholder="Digite seu e-mail" {...register("email")} />
         </div>
         <div className="flex flex-col gap-3">
           <Label htmlFor="password">Senha</Label>
-          <Input id="password" type="password" placeholder="Digite sua senha" />
+          <Input id="password" type="password" placeholder="Digite sua senha" {...register("password")} />
         </div>
 
         <Button variant="default" type="submit" className="w-full cursor-pointer">Entrar</Button>

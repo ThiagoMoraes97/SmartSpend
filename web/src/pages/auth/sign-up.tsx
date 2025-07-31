@@ -1,11 +1,14 @@
+import { PhoneMaskInput } from "@/components/phone-mask-input";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BadgeDollarSign } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router";
 
-
 export function SignUp() {
+  const [phone, setPhone] = useState("");
+
   return(
     <div className="flex flex-col items-center justify-center gap-2 p-6 w-md">
       <BadgeDollarSign className="w-16 h-16 text-primary" />
@@ -27,6 +30,16 @@ export function SignUp() {
         <div className="flex flex-col gap-3">
           <Label htmlFor="password">Senha</Label>
           <Input id="password" type="password" placeholder="Digite sua senha" />
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <Label htmlFor="phone">Celular</Label>
+          <PhoneMaskInput
+            id="phone"
+            placeholder="(21) 99999-9999"
+            type="tel"
+            onAccept={(value) => setPhone(value)}
+          />
         </div>
 
         <Button variant="default" type="submit" className="w-full cursor-pointer">Criar conta</Button>
