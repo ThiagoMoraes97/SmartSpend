@@ -20,7 +20,7 @@ interface RegisterUserUseCaseResponse {
   };
 }
 
-export class RegisterUserUseCase {
+export class RegisterUseCase {
   constructor(private userRepository: UserRepository) {}
 
   async execute({name, email, password, phone}: RegisterUserUseCaseRequest): Promise<RegisterUserUseCaseResponse> {
@@ -28,7 +28,7 @@ export class RegisterUserUseCase {
     const userWithSameEmail = await this.userRepository.findByEmail(email);
 
     if (userWithSameEmail) {
-      throw new UserAlreadyExistError();
+      throw new UserAlreadyExistError(); 
     }
 
     const password_hash = await hash(password, 6);
