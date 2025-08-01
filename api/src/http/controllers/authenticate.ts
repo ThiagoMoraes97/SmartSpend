@@ -1,8 +1,7 @@
 import z from "zod";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { AuthenticateUseCase } from "@/use-cases/authenticate";
-import { PrismaUsersRepository } from "@/repositories/prisma/prisma-users-repository";
 import { InvalidCredentialsError } from "@/use-cases/errors/invalid-credentials-error";
+import { makeAuthenticateUseCase } from "@/use-cases/factories/make-authenticate-use-case";
 
 
 export async function authenticate(request: FastifyRequest, reply: FastifyReply){
@@ -13,14 +12,27 @@ export async function authenticate(request: FastifyRequest, reply: FastifyReply)
 
   const { email, password } = authenticateBodySchema.parse(request.body);
 
-  const prismaUsersRepository = new PrismaUsersRepository();
-  const authenticateUseCase = new AuthenticateUseCase(prismaUsersRepository);
+  const authenticateUseCase = makeAuthenticateUseCase();
 
   try {
-    await authenticateUseCase.execute({
+    const {user} = await authenticateUseCase.execute({
       email,
       password,
     })
+
+    const token = await reply.jwtSign({}, {
+      sign: {
+        sub: user.id,
+        expiresIn: "7d", // Token valid for 7 days
+      },
+    });
+
+    reply.setCookie("token", token, {
+      path: "/",
+      httpOnly: true,
+      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
+    });
+    
   } catch (error) {
    if( error instanceof InvalidCredentialsError){
       return reply.status(401).send({ message: error.message });

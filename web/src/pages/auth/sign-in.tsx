@@ -2,13 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BadgeDollarSign } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
 import z from "zod";
 import { useMutation } from "@tanstack/react-query";
+import { signIn } from "@/api/sign-in";
 
 const SignInSchema = z.object({
-  email: z.string().email("E-mail inválido!"),
+  email: z.email("E-mail inválido!"),
   password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
 });
 
@@ -16,13 +18,16 @@ type SignInFormData = z.infer<typeof SignInSchema>;
 
 
 export function SignIn() {
+  const navigate = useNavigate();
 
-  const { register, handleSubmit } = useForm<SignInFormData>();
+  const { register, handleSubmit } = useForm<SignInFormData>({
+    resolver: zodResolver(SignInSchema)
+  });
 
-  const { mutateAsync: signIn } =  useMutation({
-    mutationFn: handleSignIn,
+  const { mutateAsync: authenticate } =  useMutation({
+    mutationFn: signIn,
     onSuccess: () => {
-      // Lógica após o sucesso do login, como redirecionar o usuário
+      navigate("/dashboard");
       console.log("Login realizado com sucesso!");
     },
     onError: (error) => {
@@ -32,7 +37,7 @@ export function SignIn() {
   })
   
   async function handleSignIn(data: SignInFormData) {
-    signIn(data);
+    authenticate(data);
   }
 
   return(

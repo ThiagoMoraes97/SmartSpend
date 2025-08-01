@@ -9,7 +9,6 @@ import {
   Command,
   CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command"
@@ -34,7 +33,7 @@ const organizations = [
 export function SelectOrganization() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
-  const [selectedOrganizations, setSelectedOrganizations] = React.useState<string[]>([])
+
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
